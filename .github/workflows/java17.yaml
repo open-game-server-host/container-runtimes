@@ -26,5 +26,5 @@ jobs:
       uses: docker/build-push-action@v6
       with:
         push: true
-        tags: ghcr.io/open-game-server-host/java17:${{ github.ref_name }}
+        tags: ghcr.io/open-game-server-host/container-runtimes/java17:${{ github.ref_name }}
         file: java17/Dockerfile

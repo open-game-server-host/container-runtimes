@@ -26,5 +26,5 @@ jobs:
       uses: docker/build-push-action@v6
       with:
         push: true
-        tags: ghcr.io/open-game-server-host/debian10:${{ github.ref_name }}
+        tags: ghcr.io/open-game-server-host/container-runtimes/debian10:${{ github.ref_name }}
         file: debian10/Dockerfile
