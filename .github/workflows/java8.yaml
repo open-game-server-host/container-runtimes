@@ -26,5 +26,5 @@ jobs:
       uses: docker/build-push-action@v6
       with:
         push: true
-        tags: ghcr.io//${{ github.GITHUB_WORKFLOW }}:${{ github.ref_name }}
-        file: ${{ github.GITHUB_WORKFLOW }}/Dockerfile
+        tags: ghcr.io//${{ github.workflow }}:${{ github.ref_name }}
+        file: ${{ github.workflow }}/Dockerfile
