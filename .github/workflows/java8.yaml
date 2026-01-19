@@ -1,0 +1,30 @@
+name: java8
+
+on:
+  push:
+    branches:
+    - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Docker login
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Set up Docker
+      uses: docker/setup-buildx-action@v3
+    - name: Build and push image
+      uses: docker/build-push-action@v6
+      with:
+        push: true
+        tags: ghcr.io//${{ github.GITHUB_WORKFLOW }}:${{ github.ref_name }}
+        file: ${{ github.GITHUB_WORKFLOW }}/Dockerfile
