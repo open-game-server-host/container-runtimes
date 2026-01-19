@@ -15,7 +15,7 @@ if [ -z "$DOCKER_PASSWORD" ]; then
     exit 1
 fi
 
-echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" ghcr.io
+docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD" ghcr.io
 
 # Build each runtime image from each folder and upload the docker image to ghcr
 # 'docker login' will need to be run before this script!
