@@ -6,6 +6,17 @@ if [ -z "$BRANCH" ]; then
    exit 1
 fi
 
+if [ -z "$DOCKER_USERNAME" ]; then
+    echo "\"DOCKER_USERNAME\" environment variable missing!"
+    exit 1
+fi
+if [ -z "$DOCKER_PASSWORD" ]; then
+    echo "\"DOCKER_PASSWORD\" environment variable missing!"
+    exit 1
+fi
+
+echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME"
+
 # Build each runtime image from each folder and upload the docker image to ghcr
 # 'docker login' will need to be run before this script!
 for folder in *; do
